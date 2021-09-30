@@ -27,10 +27,10 @@ jobs:
       - node/with-cache:
           steps:
             - run: npm install mocha
-            - run: alias mocha='./node_modules/.bin/_mocha'
+            - run: alias mocha='../TDD-Assignment/node_modules/.bin/_mocha'
             - run: npm install
       - run:
-          command: cd TDD-Assignment && npm start
+          command: npm start
           background: true
       - run: sleep 5
       - run: npm run test
@@ -40,3 +40,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - build

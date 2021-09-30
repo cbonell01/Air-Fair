@@ -30,6 +30,7 @@ jobs:
             - run: alias mocha='./node_modules/.bin/_mocha'
             - run: npm install
       - run:
+          command: cd TDD-Assignment
           command: npm start
           background: true
       - run: sleep 5
@@ -40,3 +41,4 @@ workflows:
   say-hello-workflow:
     jobs:
       - say-hello
+      - build

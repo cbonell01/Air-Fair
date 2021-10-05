@@ -5,6 +5,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <meta name='viewport' content='width=device-width, initial-scale=1.0'>
     <script src='https://unpkg.com/vue@next'></script>
+    <link rel="stylesheet" href="styles.css">
     <title>Air-Fair Routes Page</title>
 </head>
 <body>
@@ -27,9 +28,14 @@
                 Org/Dest: {{route.origin }}-->{{route.destination}} <br>
                 Route of Flight: {{ route.route }} <br>
                 Altitude: {{route.altitude}} <br>
-                <flight-display :origin="route.origin" :destination="route.destination" :route="route.route" :altitude="route.altitude"></flight-display>
             </li>
         </ul>
+        <h1>Display using a locally registered Vue component</h1>
+        <ol>
+            <li v-for="route in routes">
+                <flight-display :contrails="route.contrails" :origin="route.origin" :destination="route.destination" :route="route.route" :altitude="route.altitude"></flight-display>
+            </li>
+        </ol>
     </div>
       
     <script>
@@ -42,85 +48,103 @@
                             origin: 'KPHX',
                             destination: 'KLAX',
                             route: 'BXK4 BXK J212 DECAS',
-                            altitude: 32000
+                            altitude: 32000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 2,
                             origin: 'KPHX',
                             destination: 'KSAN',
                             route: 'GBN J2 MZB',
-                            altitude: 32000
+                            altitude: 32000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 3,
                             origin: 'KPHX',
                             destination: 'KSFO',
                             route: 'ZEPER2 RRSTA DOVEE BTY RUSME DYAMD5',
-                            altitude: 32000
+                            altitude: 32000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 4,
                             origin: 'KPHX',
                             destination: 'KSEA',
                             route: 'ZEPER2 RRSTA DOVEE BTY OAL J92 LMT HAWKZ7',
-                            altitude: 32000
+                            altitude: 32000,
+                            contrails: true,
+                            flight_time: 2.5
                         },
                         {
                             id: 5,
                             origin: 'KPHX',
                             destination: 'KDEN',
                             route: 'MRBIL1 JARPA SHNPS TBARR2',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: true,
+                            flight_time: 2.5
                         },
                         {
                             id: 6,
                             origin: 'KPHX',
                             destination: 'KABQ',
                             route: 'SJN9 SJN LAVAN3',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 7,
                             origin: 'KPHX',
                             destination: 'KDAL',
                             route: 'BROAK1 MAXXO TXO TURKI HERBZ1',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 8,
                             origin: 'KPHX',
                             destination: 'KMCO',
                             route: 'ECLPS1 PHASE EWM LINZY KH06Y JCT KH87I TBDRC REDFN REMIS Y280 CHRGE PRICY1',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 9,
                             origin: 'KPHX',
                             destination: 'KHOU',
                             route: 'ECLPS1 PHASE ELP FST J138 SAT BELLR3',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: false,
+                            flight_time: 2.5
                         },
                         {
                             id: 10,
                             origin: 'KPHX',
                             destination: 'KJFK',
                             route: 'BROAK1 MAXXO TXO KF27A KF27C KF27E LIT BNA J42 BKW JASEN EMI SIE CAMRN4',
-                            altitude: 33000
+                            altitude: 33000,
+                            contrails: true,
+                            flight_time: 2.5
                         }
                     ]
                 }
             },
             components: {
                 'flight-display': {
-                    props: ['origin', 'destination', 'route', 'altitude'],
-                    template: `
-                        <li>
-                            <h4>Org/Dest: {{origin}}-->{{destination}} </h4>
-                            <h4>Route: {{route}} </h4>
-                            <h4>Altitude: {{altitude}} </h4>
-                        </li>
-
-                        `
+                    props: ['origin', 'destination', 'route', 'altitude', 'contrails'],
+                    template: `<div :class="[contrails ? icing : none]">
+                                <h4>Org/Dest: {{origin}}-->{{destination}} </h4>
+                                <h4>Route: {{route}} </h4>
+                                <h4>Altitude: {{altitude}} </h4>
+                               </div>
+                            `
                 }
             }
         }

@@ -26,7 +26,8 @@
             <li v-for="route in routes">
                 Org/Dest: {{route.origin }}-->{{route.destination}} <br>
                 Route of Flight: {{ route.route }} <br>
-                Altitude: {{route.altitude}} <br><br>
+                Altitude: {{route.altitude}} <br>
+                <flight-display :origin="route.origin" :destination="route.destination" :route="route.route" :altitude="route.altitude"></flight-display>
             </li>
         </ul>
     </div>
@@ -108,10 +109,29 @@
                         }
                     ]
                 }
+            },
+            components: {
+                'flight-display': {
+                    props: ['origin', 'destination', 'route', 'altitude'],
+                    template: `
+                        <li>
+                            <h4>Org/Dest: {{origin}}-->{{destination}} </h4>
+                            <h4>Route: {{route}} </h4>
+                            <h4>Altitude: {{altitude}} </h4>
+                        </li>
+
+                        `
+                }
             }
         }
         
         const app = Vue.createApp(routeList).mount('#route-app');
+
+        /*app.component('flight-display', {
+            props: ['flight'],
+            template: `<h4>{{ flight }}</h4>`
+        });
+        */
         /*app.component('route-display', {
             props: ['route'],
             template: `<li>{{ route.origin route.destination }}</li>`

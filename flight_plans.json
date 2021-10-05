@@ -1,0 +1,64 @@
+{
+    "flight_plans": [
+        {
+            "origin": "KPHX",
+            "destination": "KLAX",
+            "route": "BXK4 BXK J212 DECAS",
+            "altitude": 32000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KSAN",
+            "route": "GBN J2 MZB",
+            "altitude": 32000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KSFO",
+            "route": "ZEPER2 RRSTA DOVEE BTY RUSME DYAMD5",
+            "altitude": 32000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KSEA",
+            "route": "ZEPER2 RRSTA DOVEE BTY OAL J92 LMT HAWKZ7",
+            "altitude": 32000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KDEN",
+            "route": "MRBIL1 JARPA SHNPS TBARR2",
+            "altitude": 33000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KABQ",
+            "route": "SJN9 SJN LAVAN3",
+            "altitude": 33000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KDAL",
+            "route": "BROAK1 MAXXO TXO TURKI HERBZ1",
+            "altitude": 33000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KMCO",
+            "route": "ECLPS1 PHASE EWM LINZY KH06Y JCT KH87I TBDRC REDFN REMIS Y280 CHRGE PRICY1",
+            "altitude": 33000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KHOU",
+            "route": "ECLPS1 PHASE ELP FST J138 SAT BELLR3",
+            "altitude": 33000
+        },
+        {
+            "origin": "KPHX",
+            "destination": "KJFK",
+            "route": "BROAK1 MAXXO TXO KF27A KF27C KF27E LIT BNA J42 BKW JASEN EMI SIE CAMRN4",
+            "altitude": 33000
+        }
+    ]
+}

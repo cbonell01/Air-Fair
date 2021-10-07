@@ -30,7 +30,7 @@
                 Altitude: {{route.altitude}} <br>
             </li>
         </ul>
-        <h1>Display using a locally registered Vue component</h1>
+        <h2>Display using a locally registered Vue component</h2>
         <ol>
             <li v-for="route in routes">
                 <flight-display :contrails="route.contrails" :origin="route.origin" :destination="route.destination" :route="route.route" :altitude="route.altitude"></flight-display>
@@ -49,8 +49,7 @@
                             destination: 'KLAX',
                             route: 'BXK4 BXK J212 DECAS',
                             altitude: 32000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 2,
@@ -58,8 +57,7 @@
                             destination: 'KSAN',
                             route: 'GBN J2 MZB',
                             altitude: 32000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 3,
@@ -67,8 +65,7 @@
                             destination: 'KSFO',
                             route: 'ZEPER2 RRSTA DOVEE BTY RUSME DYAMD5',
                             altitude: 32000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 4,
@@ -76,8 +73,7 @@
                             destination: 'KSEA',
                             route: 'ZEPER2 RRSTA DOVEE BTY OAL J92 LMT HAWKZ7',
                             altitude: 32000,
-                            contrails: true,
-                            flight_time: 2.5
+                            contrails: true
                         },
                         {
                             id: 5,
@@ -85,8 +81,7 @@
                             destination: 'KDEN',
                             route: 'MRBIL1 JARPA SHNPS TBARR2',
                             altitude: 33000,
-                            contrails: true,
-                            flight_time: 2.5
+                            contrails: true
                         },
                         {
                             id: 6,
@@ -94,8 +89,7 @@
                             destination: 'KABQ',
                             route: 'SJN9 SJN LAVAN3',
                             altitude: 33000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 7,
@@ -103,8 +97,7 @@
                             destination: 'KDAL',
                             route: 'BROAK1 MAXXO TXO TURKI HERBZ1',
                             altitude: 33000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 8,
@@ -112,8 +105,7 @@
                             destination: 'KMCO',
                             route: 'ECLPS1 PHASE EWM LINZY KH06Y JCT KH87I TBDRC REDFN REMIS Y280 CHRGE PRICY1',
                             altitude: 33000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 9,
@@ -121,8 +113,7 @@
                             destination: 'KHOU',
                             route: 'ECLPS1 PHASE ELP FST J138 SAT BELLR3',
                             altitude: 33000,
-                            contrails: false,
-                            flight_time: 2.5
+                            contrails: false
                         },
                         {
                             id: 10,
@@ -130,8 +121,7 @@
                             destination: 'KJFK',
                             route: 'BROAK1 MAXXO TXO KF27A KF27C KF27E LIT BNA J42 BKW JASEN EMI SIE CAMRN4',
                             altitude: 33000,
-                            contrails: true,
-                            flight_time: 2.5
+                            contrails: true
                         }
                     ]
                 }
@@ -139,10 +129,10 @@
             components: {
                 'flight-display': {
                     props: ['origin', 'destination', 'route', 'altitude', 'contrails'],
-                    template: `<div :class="[contrails ? icing : none]">
-                                <h4>Org/Dest: {{origin}}-->{{destination}} </h4>
-                                <h4>Route: {{route}} </h4>
-                                <h4>Altitude: {{altitude}} </h4>
+                    template: `<div :class="[contrails ? 'icing' : 'none']">
+                                <a>Org/Dest: {{origin}}-->{{destination}} </a><br>
+                                <a>Route: {{route}} </a><br>
+                                <a>Altitude: {{altitude}} </a><br><br>
                                </div>
                             `
                 }

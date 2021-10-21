@@ -138,7 +138,7 @@
                         destination: 'KHOU',
                         route: 'ECLPS1 PHASE ELP FST J138 SAT BELLR3',
                         altitude: 33000,
-                        contrails: false
+                        contrails: true
                     },
                     {
                         id: 10,
@@ -160,6 +160,9 @@
                   <a>Route: {{ route }} </a><br>
                   <a>Altitude: {{ altitude }} </a><br><br>
                   </div>
+
+                  <h3 v-if=contrails>Contrail Are an Issue<br><button type="submit" class="btn btn-primary">Adjust Flight Plan</button></h3>
+                  <h5 v-if=!contrails>No issue with contrails.</h5>
                 `
             }
         }

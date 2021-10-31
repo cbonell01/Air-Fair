@@ -1,5 +1,6 @@
 const express = require('express');
 const path = require('path');
+const axios = require('axios');
 
 const app = express()
 const PORT = 8080;
@@ -27,6 +28,19 @@ app.get('/hello', (req, res) => {
 // Add a routes homepage
 app.get('/routes', (req, res) => {
     res.sendFile(path.join(__dirname, '/index.html'));
+});
+
+// This code will help make API calls to the flightplan database API
+app.get('/route/:id', (req, res) => {
+    const flight = axios.get('https://api.flightplandatabase.com/plan/4648179')
+        .then(res => {
+            const flights = res.data.route.nodes;
+            console.log(flights);
+        })
+        .catch(error => {
+            console.log(error);
+        });
+    res.send(`id sent: ${req.params.id}`);
 });
 
 // About Us page

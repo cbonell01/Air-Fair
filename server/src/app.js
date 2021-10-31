@@ -5,9 +5,9 @@ const morgan = require('morgan')
 const app = express()
 app.use(bodyParser.json())
 
-app.get('/status', (reg, res) => {
+app.post('/register', (req, res) => {
     res.send({
-        message: 'Hello World!'
+        message: `Hello, ${req.body.company} your company account has been successfully created.  Account is linked to ${req.body.email}`
     })
 })
 

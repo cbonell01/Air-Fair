@@ -32,14 +32,21 @@ app.get('/routes', (req, res) => {
 
 // This code will help make API calls to the flightplan database API
 app.get('/route/:id', (req, res) => {
-    const flight = axios.get('https://api.flightplandatabase.com/plan/4648179')
+    axios.get('https://api.flightplandatabase.com/plan/4648179')
         .then(res => {
             const flights = res.data.route.nodes;
+            axios.post('http://localhost:3000/data/', flights);
             console.log(flights);
+            //return flights;
         })
+        //.post('http://localhost:3000/flight_plans/', res.data)
         .catch(error => {
             console.log(error);
         });
+
+    //axios.post('http://localhost:3000/flight_plans/', '{"flight": 1}');
+
+    //const save = await axios.post('http://localhost:3000/flight_plans/', flight);
     res.send(`id sent: ${req.params.id}`);
 });
 

@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "type": "APT",
+      "ident": "KSFO",
+      "name": "San Francisco International",
+      "lat": 37.6185,
+      "lon": -122.375,
+      "alt": 0,
+      "via": null
+    },
+    {
+      "type": "FIX",
+      "ident": "DUGLE",
+      "name": null,
+      "lat": 37.86500000000001,
+      "lon": -120.668,
+      "alt": 17600,
+      "via": null
+    },
+    {
+      "type": "FIX",
+      "ident": "TATOO",
+      "name": null,
+      "lat": 38.32830000000001,
+      "lon": -117.281,
+      "alt": 35000,
+      "via": {
+        "type": "AWY-HI",
+        "ident": "Q134"
+      }
+    },
+    {
+      "type": "FIX",
+      "ident": "JULIK",
+      "name": null,
+      "lat": 39.15299999999999,
+      "lon": -112.526,
+      "alt": 35000,
+      "via": {
+        "type": "AWY-HI",
+        "ident": "Q134"
+      }
+    },
+    {
+      "type": "FIX",
+      "ident": "HERSH",
+      "name": null,
+      "lat": 39.5128,
+      "lon": -109.985,
+      "alt": 35000,
+      "via": {
+        "type": "AWY-HI",
+        "ident": "Q134"
+      }
+    },
+    {
+      "type": "FIX",
+      "ident": "VOAXA",
+      "name": null,
+      "lat": 39.788399999999996,
+      "lon": -106.533,
+      "alt": 18400,
+      "via": {
+        "type": "AWY-HI",
+        "ident": "Q134"
+      }
+    },
+    {
+      "type": "APT",
+      "ident": "KDEN",
+      "name": "Denver Intl",
+      "lat": 39.86099999999999,
+      "lon": -104.672,
+      "alt": 0,
+      "via": null
+    }
+  ]
+}

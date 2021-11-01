@@ -34,7 +34,7 @@
               </div>
               <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
               <hr>
-              <p></p>Already have an account? <a href="#">Sign in</a><p></p>
+              <p></p>Already have an account? <a href="#" @click="goToLogin()">Sign in</a><p></p>
             </form>
           </div>
         </div>
@@ -47,6 +47,11 @@
 export default {
   data () {
     return {
+    }
+  },
+  methods: {
+    goToLogin(){
+      this.$router.push('/Login');
     }
   }
 }

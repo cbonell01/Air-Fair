@@ -12,6 +12,9 @@
         <div id="formFooter">
           <a class="underlineHover" href="#">Forgot Password?</a>
         </div>
+        <div id="formFooter">
+          <a class="underlineHover" href="#"  @click="goToRegister()">Need an Account?</a>
+        </div>
 
       </div>
     </div>
@@ -30,6 +33,11 @@ export default {
   watch: {
     email (value) {
       console.log('Email: ', value)
+    }
+  },
+  methods: {
+    goToRegister() {
+      this.$router.push('/Register');
     }
   }
 }

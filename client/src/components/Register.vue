@@ -49,10 +49,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-div {
-  background-color: #c3e7fd;
-  padding: 10px;
+form {
+  color: #000000
 }
+
 
 button {
   background-color: rgb(83, 83, 114);

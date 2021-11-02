@@ -1,5 +1,6 @@
 <template>
   <div>
+    <img v-bind:src="logo" alt="">
   <h1>Air-Fair Login</h1>
   
     <div class="wrapper fadeInDown">
@@ -31,7 +32,8 @@ export default {
   data () {
     return {
       email: '123@email',
-      password: '123456'
+      password: '123456',
+      logo: '../assets/Air-Fair_logo'
     }
   },
   watch: {

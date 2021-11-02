@@ -1,8 +1,7 @@
 <template>
-    <div>
-        <h1>Air-Fair</h1>
-    
+   <div>
     <ul>
+        <li><img v-bind:src="logo" width = "200" height = "50" align = "left" @click="goToHome()"></li>
         <li><a href="#" @click="goToHome()" id="Home">Home</a></li>
         <li><a href="#" @click="goToLogin()">Login</a></li>
         <li><a href="#" @click="goToRegister()">Register</a></li>
@@ -11,6 +10,7 @@
         <li><a href="#" @click="goToHome()">About</a></li>
         <input type="text" placeholder="Search..">
     </ul>
+    <body>Welcome to Air-Fair</body>
     </div>
 </template>
 
@@ -18,6 +18,7 @@
 export default {
   data () {
     return {
+        logo: require('../assets/mainLogo.jpg'),
     }
   },
   methods: {
@@ -37,12 +38,14 @@ export default {
 <style scoped>
 
 ul {
+    position: relative;
+    top: 110px;
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: left;
-    margin: 25px 10px;
-    background-color: #c3e7fd;
+    margin: 25px 0px;
+    background-color: #66a2ba;
     overflow: hidden;
 }
 
@@ -53,8 +56,12 @@ li {
 a {
     display: block;
     padding: 10px;
-    background-color: #c3e7fd;
-    color: #000000;
+    background-color: #66a2ba;
+    color: #273945;
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+    font-family: Verdana, Helvetica, sans-serif;
 }
 
 a:link {
@@ -66,13 +73,13 @@ a:visited {
 }
 
 a:hover {
-    background-color: #0066CC;
+    background-color: #243a47;
     color: #FFFFFF;
 }
 
 input {
   position: relative;
-  top: 3px;
+  top: 9px;
   right: 10px;
   width: 25%;
   height: 25px;
@@ -82,7 +89,5 @@ input {
   box-sizing: border-box;
   float: right;
 }
-
-
 
 </style>

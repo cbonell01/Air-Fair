@@ -1,6 +1,8 @@
 <template>
   <div>
+    <img v-bind:src="logo" alt="">
   <h1>Air-Fair Login</h1>
+  
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <form>
@@ -15,6 +17,9 @@
         <div id="formFooter">
           <a class="underlineHover" href="#"  @click="goToRegister()">Need an Account?</a>
         </div>
+        <div id="formFooter">
+          <a class="underlineHover" href="#" @click="goToMainPage()">Return Home</a>
+        </div>
 
       </div>
     </div>
@@ -27,7 +32,8 @@ export default {
   data () {
     return {
       email: '123@email',
-      password: '123456'
+      password: '123456',
+      logo: '../assets/Air-Fair_logo'
     }
   },
   watch: {
@@ -38,6 +44,9 @@ export default {
   methods: {
     goToRegister() {
       this.$router.push('/Register');
+    },
+    goToMainPage() {
+      this.$router.push('/mainpage');
     }
   }
 }
@@ -166,7 +175,7 @@ input[type=text] {
   display: inline-block;
   font-size: 16px;
   margin: 5px;
-  width: 85%;
+  width: 80%;
   border: 2px solid #f6f6f6;
   -webkit-transition: all 0.5s ease-in-out;
   -moz-transition: all 0.5s ease-in-out;

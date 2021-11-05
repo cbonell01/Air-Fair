@@ -1,1 +1,8 @@
-# This file will help ensure we don't commit library files, et al. Right now, it doesn't ignore anything.
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env

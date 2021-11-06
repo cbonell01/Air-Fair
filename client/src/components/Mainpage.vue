@@ -5,7 +5,7 @@
         <li><a href="#" @click="goToHome()" id="Home">Home</a></li>
         <li><a href="#" @click="goToLogin()">Login</a></li>
         <li><a href="#" @click="goToRegister()">Register</a></li>
-        <li><a href="#">Flight Plans</a></li>
+        <li><a href="#" @click="getData()">Flight Plans </a></li>
         <li><a href="#">Reports</a></li>
         <li><a href="#" @click="goToHome()">About</a></li>
         <input type="text" placeholder="Search..">
@@ -15,22 +15,23 @@
 </template>
 
 <script>
+
 export default {
   data () {
     return {
-        logo: require('../assets/mainLogo.jpg'),
+      logo: require('../assets/mainLogo.jpg')
     }
   },
   methods: {
-    goToLogin(){
-      this.$router.push('/Login');
+    goToLogin () {
+      this.$router.push('/Login')
     },
-    goToHome(){
-      this.$router.push('/mainpage');
+    goToHome () {
+      this.$router.push('/mainpage')
     },
-    goToRegister() {
-        this.$router.push('/Register');
-    },
+    goToRegister () {
+      this.$router.push('/Register')
+    }
   }
 }
 </script>

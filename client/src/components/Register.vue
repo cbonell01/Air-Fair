@@ -21,7 +21,7 @@
               <hr>
               <p></p>Already have an account? <a href="#" @click="goToLogin()">Sign in</a><p></p>
               <p></p><a href="#" @click="goToHome()">Home</a><p></p>
-            
+
           </div>
         </div>
       </div>
@@ -36,14 +36,15 @@ export default {
     }
   },
   methods: {
-    goToLogin(){
-      this.$router.push('/Login');
+    goToLogin () {
+      this.$router.push('/Login')
     },
-    goToHome(){
-      this.$router.push('/mainpage');
+    goToHome () {
+      this.$router.push('/Mainpage')
     }
   }
 }
+
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
@@ -52,7 +53,6 @@ export default {
 form {
   color: #000000
 }
-
 
 button {
   background-color: rgb(83, 83, 114);
@@ -81,5 +81,3 @@ input+input {
 }
 
 </style>
-
-

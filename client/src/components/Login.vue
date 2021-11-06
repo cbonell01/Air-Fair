@@ -2,7 +2,6 @@
   <div>
     <img v-bind:src="logo" alt="">
   <h1>Air-Fair Login</h1>
-  
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <form>
@@ -42,11 +41,11 @@ export default {
     }
   },
   methods: {
-    goToRegister() {
-      this.$router.push('/Register');
+    goToRegister () {
+      this.$router.push('/Register')
     },
-    goToMainPage() {
-      this.$router.push('/mainpage');
+    goToMainPage () {
+      this.$router.push('/Mainpage')
     }
   }
 }

@@ -10,7 +10,11 @@
         <li><a href="#" @click="goToAbout()" id="About">About</a></li>
         <input type="text" placeholder="Search..">
     </ul>
-    <body>Welcome to Air-Fair</body>
+    <body>About Air-Fair</body>
+    <br>
+    <p>
+        Air-Fair is an application dedicated to assisting air carriers, which are traditionally thought of as any air-service provider in the business of transporting people, commodities, or a combination thereof, assistance in avoiding impacts to the climate based on their business activities.
+    </p>
     </div>
 </template>
 
@@ -91,6 +95,21 @@ input {
   border: 1px solid #CCF;
   box-sizing: border-box;
   float: right;
+}
+
+p {
+    position: relative;
+    padding: 15px 20px;
+    display: inline-block;
+    float: none;
+    margin: 20px;
+    padding: 70px;
+    font-size: 24px;
+}
+
+body {
+    position: relative;
+    font-size: 24px;
 }
 
 </style>

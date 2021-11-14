@@ -10,7 +10,11 @@
         <li><a href="#" @click="goToAbout()" id="About">About</a></li>
         <input type="text" placeholder="Search..">
     </ul>
-    <body>Welcome to Air-Fair</body>
+    <body>Flight Plans</body>
+    <br>
+    <p>
+        Here is where flight plan information will be displayed.
+    </p>
     </div>
 </template>
 
@@ -22,7 +26,7 @@ export default {
     }
   },
   methods: {
-        goToLogin(){
+    goToLogin(){
       this.$router.push('/Login');
     },
     goToHome(){
@@ -32,10 +36,10 @@ export default {
       this.$router.push('/Register');
     },
     goToFlightPlans() {
-      this.$router.push('/Flightplans');
+      this.$router.push('/flightplans');
     },
     goToReports() {
-      this.$router.push('/Reports');
+      this.$router.push('/reports');
     },
     goToAbout() {
       this.$router.push('/About');
@@ -97,6 +101,21 @@ input {
   border: 1px solid #CCF;
   box-sizing: border-box;
   float: right;
+}
+
+p {
+    position: relative;
+    padding: 15px 20px;
+    display: inline-block;
+    float: none;
+    margin: 20px;
+    padding: 70px;
+    font-size: 24px;
+}
+
+body {
+    position: relative;
+    font-size: 24px;
 }
 
 </style>

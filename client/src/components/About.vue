@@ -5,8 +5,8 @@
         <li><a href="#" @click="goToHome()" id="Home">Home</a></li>
         <li><a href="#" @click="goToLogin()" id="Login">Login</a></li>
         <li><a href="#" @click="goToRegister()" id="Register">Register</a></li>
-        <li><a href="#">Flight Plans</a></li>
-        <li><a href="#">Reports</a></li>
+        <li><a href="#" @click="goToFlightPlans()" id="Flightplans">Flight Plans</a></li>
+        <li><a href="#" @click="goToReports()" id="Reports">Reports</a></li>
         <li><a href="#" @click="goToAbout()" id="About">About</a></li>
         <input type="text" placeholder="Search..">
     </ul>
@@ -34,6 +34,12 @@ export default {
     },
     goToRegister() {
       this.$router.push('/Register');
+    },
+    goToFlightPlans() {
+      this.$router.push('/Flightplans');
+    },
+    goToReports() {
+      this.$router.push('/Reports');
     },
     goToAbout() {
       this.$router.push('/About');

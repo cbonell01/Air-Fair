@@ -3,7 +3,7 @@ import sqlite3, re, requests, time
 # Connect to the database
 con = sqlite3.connect('fixes.db')
 cur = con.cursor()
-results = cur.execute('select * from fixes LIMIT 300')
+results = cur.execute('select * from fixes')
 weather_locations = results.fetchall()
 
 # Set up the calls to the Weather API

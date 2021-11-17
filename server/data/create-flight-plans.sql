@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS flightplans;
+
 CREATE TABLE flightplans( 
     id              INTEGER     PRIMARY KEY,
     origin          TEXT        NOT NULL,

@@ -2,13 +2,13 @@
   <div>
     <img v-bind:src="logo" alt="">
   <h1>Air-Fair Login</h1>
-  
+
     <div class="wrapper fadeInDown">
       <div id="formContent">
         <form>
-          <input type="text" id="login" class="fadeIn second" name="email" v-module="email" placeholder="Email">
-          <input type="text" id="password" class="fadeIn third" name="pass" v-module="password" placeholder="Password">
-          <input type="submit" class="fadeIn fourth" value="Log In">
+          <input type="text" id="login" class="fadeIn second" name="email"v-model="loginInfo.email" placeholder="Username">
+          <input type="password" id="password" class="fadeIn third" name="pass" v-model="loginInfo.pass" placeholder="Password">
+          <input type="button" class="fadeIn fourth" v-on:click="login()" value="Log In">
         </form>
 
         <div id="formFooter">
@@ -16,9 +16,6 @@
         </div>
         <div id="formFooter">
           <a class="underlineHover" href="#"  @click="goToRegister()">Need an Account?</a>
-        </div>
-        <div id="formFooter">
-          <a class="underlineHover" href="#" @click="goToMainPage()">Return Home</a>
         </div>
 
       </div>
@@ -28,25 +25,50 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   data () {
     return {
-      email: '123@email',
-      password: '123456',
-      logo: '../assets/Air-Fair_logo'
-    }
-  },
-  watch: {
-    email (value) {
-      console.log('Email: ', value)
+      loginInfo: {
+        email: '',
+        pass: ''
+      }
     }
   },
   methods: {
     goToRegister() {
       this.$router.push('/Register');
     },
-    goToMainPage() {
-      this.$router.push('/mainpage');
+    goToMainpage() {
+      this.$router.push('/Mainpage');
+    },
+    login() {
+      if (this.loginInfo.email !== '' || this.loginInfo.pass !== '') {
+        let config = {
+          headers: {
+            username: this.loginInfo.email,
+            password: this.loginInfo.pass
+          }
+        }
+
+        let returnedData = null
+        axios.get('http://localhost:8081/GetLogin/', config)
+        .then((response) =>  {
+          returnedData = response.data
+
+          if(returnedData === 'match') {
+            this.goToMainpage()
+          } else {
+            console.log((returnedData))
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      } else {
+        alert('Username or password is empty');
+      }
     }
   }
 }
@@ -165,7 +187,7 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
   transform: scale(0.95);
 }
 
-input[type=text] {
+input[type=text], input[type=password] {
   background-color: #f6f6f6;
   border: none;
   color: #0d0d0d;

@@ -1,28 +1,37 @@
 <template>
   <div>
-  <h1>Air-Fair Registration</h1>
-    <div class="container">
-      <div class="row">
-        <div class="panel panel-primary">
-          <div class="panel-body">
-            <form method="POST" action="#" role="form">
-               First Name:<br /><input type="text" id="first" maxlength="50" class="form-control"><br /><br />
-               Last Name:<br /><input type="text" id="last" maxlength="50" class="form-control"><br /><br />
-               Email Name:<br /><input type="text" id="email" maxlength="50" class="form-control"><br /><br />
-               Re-enter Email:<br /><input type="text" id="email2" maxlength="50" class="form-control"><br /><br />
-               Password:<br /><input type="text" id="password" maxlength="50" class="form-control"><br /><br />
-               Re-enter Password:<br /><input type="password2" id="first" maxlength="50" class="form-control"><br /><br />
-            </form>
+    <h1>Air-Fair Registration</h1>
+    <div class="wrapper fadeInDown">
+      <div id="formContent">
+        <form>
+<!--          <input type="text" id="firstName" class="fadeIn second" name="firstName" v-model="registrationInfo.firstName"
+                 placeholder="First Name"
+                 maxlength="20">
+          <input type="text" id="lastName" class="fadeIn third" name="lastName" v-model="registrationInfo.lastName"
+                 placeholder="Last Name" maxlength="20">-->
+          <input type="text" id="email" class="fadeIn fourth" name="email" v-model="registrationInfo.email"
+                 placeholder="Email" maxlength="50">
+          <input type="text" id="emailConfirm" class="fadeIn fourth" name="emailConfirm"
+                 v-model="registrationInfo.emailConfirm" placeholder="Confirm Email"
+                 maxlength="50">
+          <input type="text" id="phoneNumber" class="fadeIn fourth" name="phoneNumber"
+                 v-model="registrationInfo.phoneNumber" placeholder="Phone Number"
+                 maxlength="50">
+          <input type="password" id="password" class="fadeIn fifth" name="password" v-model="registrationInfo.password"
+                 placeholder="Password" maxlength="50">
+          <input type="password" id="passwordConfirm" class="fadeIn fifth" name="passwordConfirm"
+                 v-model="registrationInfo.passwordConfirm"
+                 placeholder="Confirm Password"
+                 maxlength="50">
+          <input type="text" id="company" class="fadeIn fifth" name="passwordConfirm"
+                 v-model="registrationInfo.companyName"
+                 placeholder="Company Name"
+                 maxlength="50">
+          <input type="button" class="fadeIn fifth" v-on:click="register()" value="Create your account">
+        </form>
 
-              <div class="form-group">
-                <button id="signupSubmit" type="submit" class="btn btn-info btn-block">Create your account</button>
-              </div>
-              <p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
-              <hr>
-              <p></p>Already have an account? <a href="#" @click="goToLogin()">Sign in</a><p></p>
-              <p></p><a href="#" @click="goToHome()">Home</a><p></p>
-            
-          </div>
+        <div class="formFooter">
+          <a class="underlineHover" href="#" @click="goToLogin()">Already have an account?</a>
         </div>
       </div>
     </div>
@@ -30,17 +39,59 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
-  data () {
+  data() {
     return {
+      registrationInfo: {
+        phoneNumber: '',
+        email: '',
+        emailConfirm: '',
+        password: '',
+        passwordConfirm: '',
+        companyName: ''
+      }
     }
   },
   methods: {
-    goToLogin(){
+    goToLogin() {
       this.$router.push('/Login');
     },
-    goToHome(){
-      this.$router.push('/mainpage');
+    register() {
+      if(this.registrationInfo.email !== this.registrationInfo.emailConfirm) {
+        alert('Email must match')
+      }
+
+      if(this.registrationInfo.password !== this.registrationInfo.passwordConfirm) {
+        alert('Password must match')
+      }
+      let registrationMessage
+
+      let config = {
+        headers: {
+          username: this.registrationInfo.email,
+          password: this.registrationInfo.password,
+          company: this.registrationInfo.companyName,
+          phone: this.registrationInfo.phoneNumber
+        }
+      }
+      console.log(this.registrationInfo.phoneNumber)
+      axios.get('http://localhost:8081/Register/', config)
+        .then((response) => {
+          registrationMessage = response.data
+
+          if (registrationMessage === 'match') {
+
+          } else {
+            console.log((registrationMessage))
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      this.goToLogin()
     }
   }
 }
@@ -48,38 +99,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
-form {
-  color: #000000
-}
-
-
-button {
-  background-color: rgb(83, 83, 114);
-  border: 1px solid #CCF;
-  border-radius: 10px;
-  color: #FFFFFF
-}
-
-input {
-  width: 25%;
-  height: 25px;
-  padding: 5px 20px;
-  display: inline-block;
-  border: 1px solid #CCF;
-  border-radius: 10px;
-  box-sizing: border-box;
-}
-
-label+input {
-  width: 30%;
-  margin: 0 30% 0 4%;
-}
-
-input+input {
-  float: right;
-}
-
+  @import '../assets/style/main.css';
 </style>
 
 

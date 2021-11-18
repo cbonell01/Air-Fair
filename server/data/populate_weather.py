@@ -7,8 +7,9 @@ results = cur.execute('select * from fixes')
 weather_locations = results.fetchall()
 
 # Set up the calls to the Weather API
-API_ENDPOINT = 'https://api.openweathermap.org/data/2.5/onecall'#'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}'
+API_ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather'#'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid={API key}'
 API_KEY = '7ed03a82f1b90a06d594b044bfcaa7ca'
+API_KEY_2 = '9a739637ba719693fee6cdb5138e25d4'
 EXCLUDE = ['minutely,hourly,daily,alerts']
 update_query = """UPDATE fixes SET time = ?, weather = ? WHERE fix = ?"""
 
@@ -45,11 +46,14 @@ for fix in weather_locations:
         continue;
     else: # No weather exists for location
         [lat, lon] = calculate_coordinate(parse_coordinate(fix[2]))
-        PARAMS = {'lat':lat, 'lon':lon, 'exclude': EXCLUDE, 'appid':API_KEY}
-        weather = requests.get(url = API_ENDPOINT, params=PARAMS)
+        PARAMS = {'lat':lat, 'lon':lon, 'exclude':EXCLUDE, 'appid':API_KEY_2}
+        try:
+            weather = requests.get(url = API_ENDPOINT, params=PARAMS)
+        except Exception:
+            data = (time.time(), 'Exception durring connection occurred.', fix[0])
         data = (time.time(), weather.text, fix[0])
         cur.execute(update_query, data)
         con.commit()
-        time.sleep(.9)
+        time.sleep(.35)
 
 con.close()

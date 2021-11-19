@@ -81,17 +81,16 @@ export default {
         .then((response) => {
           registrationMessage = response.data
 
-          if (registrationMessage === 'match') {
+          if (registrationMessage === 'existing account found') {
 
           } else {
-            console.log((registrationMessage))
+            alert('Account created')
+            this.goToLogin()
           }
         })
         .catch((error) => {
           console.log(error)
         })
-
-      this.goToLogin()
     }
   }
 }

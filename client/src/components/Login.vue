@@ -62,7 +62,7 @@ export default {
             if (returnedData === 'match') {
               this.goToMainpage()
             } else {
-              console.log((returnedData))
+              alert('Username or password does not match')
             }
           })
           .catch((error) => {

@@ -4,6 +4,7 @@ const oracledb = require('oracledb');
 const dbconfig = require('./dbconfig');
 const app = express()
 const cors = require('cors');
+
 app.use(cors())
 app.use(bodyParser.json())
 const dotenv = require('dotenv');
@@ -128,6 +129,29 @@ async function RegisterAccount (registrationInfo) {
     }
 }
 
+async function search(origin, destination) {
+    let sql = `SELECT * FROM \"GCASTROLARA\".BASE_FLIGHT_PLANS WHERE ORIGIN = \'${origin}\' AND DESTINATION = \'${destination}\'`;
+    console.log(sql)
+    let connection, result;
+    try {
+        oracledb.fetchAsString = [ oracledb.CLOB ];
+        connection = await oracledb.getConnection(dbconfig)
+        result = await connection.execute(sql);
+    } catch (err) {
+        console.log(err)
+    } finally {
+        if (connection) {
+            try {
+                await connection.close();
+            } catch (err) {
+                return console.error(err.message);
+            }
+        }
+    }
+    console.log(result.rows[0])
+    return result.rows
+}
+
 app.get('/Register', async function (req, res) {
     console.log(req.headers)
     await RegisterAccount(req.headers)
@@ -139,4 +163,9 @@ app.get('/GetLogin/', async function (req, res) {
     res.send(rows);
 });
 
+app.get('/SearchFlight/', async function (req, res) {
+    let flights = await search(req.headers.org, req.headers.dest)
+    console.log(flights)
+    res.send(flights)
+});
 app.listen(process.env.PORT || 8081)

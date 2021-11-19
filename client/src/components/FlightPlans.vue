@@ -15,14 +15,27 @@
     <p>
         Here is where flight plan information will be displayed.
     </p>
+     <br>
+     <input type="text" placeholder="Source" style="text-transform:uppercase" v-model="UserFlightSearch.Source">
+     <input type="text" placeholder="Destination" style="text-transform:uppercase" v-model="UserFlightSearch.Destination">
+     <input type="button" value="Search" v-on:click="SearchFlight()">
+     <br>
+     <br>
+     <textarea type="text" id="output" placeholder="Search result..." disabled="true" value="tu" aria-multiline="true"></textarea>
     </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data () {
     return {
         logo: require('../assets/mainLogo.jpg'),
+    UserFlightSearch: {
+      Source: '',
+      Destination: ''
+    }
     }
   },
   methods: {
@@ -43,6 +56,25 @@ export default {
     },
     goToAbout() {
       this.$router.push('/About');
+    },
+    SearchFlight () {
+      console.log(this.UserFlightSearch.Source)
+      console.log(this.UserFlightSearch.Destination)
+      let config = {
+        headers: {
+          org: this.UserFlightSearch.Source.toString().toUpperCase(),
+          dest: this.UserFlightSearch.Destination.toString().toUpperCase()
+        }
+      }
+      axios.get(`http://localhost:8081/SearchFlight/`, config)
+        .then((response) => {
+          document.getElementById('output').value = response.data
+          document.getElementById('output').innerHTML = response.data
+          console.log(response.data[0])
+        })
+        .catch((error) => {
+          console.log(error)
+        })
     }
   }
 }
